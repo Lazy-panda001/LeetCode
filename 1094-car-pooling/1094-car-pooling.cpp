@@ -22,16 +22,15 @@ public:
             highway[trips[i][2]] -= trips[i][0];
         }
         
-       for(auto it : highway)
+     /*  for(auto it : highway)
         {
             cout<<it;
         }
         cout<<endl;
-        
+       */ 
         int check=0;
         for(int i=0; i<=last_border; i++)
         {
-            
             check += highway[i];
             //cout<<highway[i];
             if(check > capacity)
