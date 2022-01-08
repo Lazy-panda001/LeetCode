@@ -12,15 +12,15 @@ using namespace std;
 
 class Solution{
   public:
-    int MissingNumber(vector<int>& v, int n) 
+    int MissingNumber(vector<int>& array, int n) 
     {
         // Your code goes here
         
-       // vector<int>res(n+1,0);
+        vector<int>res(n+1,0);
         
-       /* int res[n+1]={0};
+      //  int mp[n+1]={0};
       
-	    for(int i=0;i<=n+1;i++)
+	    for(int i=0;i<array.size();i++)
 	    {
 		    res[array[i]]++;
 	    }
@@ -31,15 +31,7 @@ class Solution{
 		    {
 			    return i;
 		    }
-	    }*/
-	     int count[n+1]={0};
-        for(int i=0;i<v.size();i++){
-            count[v[i]]++;
-        }
-        for(int j=1;j<=n;j++){
-            if(count[j]==0)
-               return j;
-        }
+	    }
 	    
     }
 };
