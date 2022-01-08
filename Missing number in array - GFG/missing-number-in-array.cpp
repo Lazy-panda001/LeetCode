@@ -16,9 +16,9 @@ class Solution{
     {
         // Your code goes here
         
-       vector<int>res(n+1,0);
+      // vector<int>res(n+1,0);
         
-      //  int mp[n+1]={0};
+       int res[n+1]={0};
       
 	    for(int i=0;i<array.size();i++)
 	    {
