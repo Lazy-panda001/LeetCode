@@ -54,7 +54,7 @@ public:
             {
                 str +=it[j];
             }
-            sum +=stoi(str,0,2); // comment for convert string to integer : of a binary string 
+            sum +=stoi(str,0,2); // for convert string to integer : of a binary string 
            // cout<<sum<<" ";
         }
         
