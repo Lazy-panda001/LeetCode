@@ -17,8 +17,8 @@ public:
         queue<int> qu;
         qu.push(0);
         
-        vector<int> vis(n,0);
-        vis[0]=1;
+      //  vector<int> vis(n,0);
+     //   vis[0]=1;
         
         int steps = 0;
         
@@ -27,31 +27,27 @@ public:
         {
             int size = qu.size();
             
-           // steps++;
+            steps++;
             
             for(int i=0; i<size; i++)
             {
                 int index = qu.front();
                 qu.pop();
                 
-                if(index == n-1)
-                {
-                    flag = true;
-                    break;
-                }
-                
                 // just right
-                if(index+1 < n and vis[index+1] == 0)
+                if(index+1 < n and ump.find(arr[index+1])!= ump.end())
                 {
+                    if(index+1 == n-1)
+                        return steps;
                     qu.push(index+1);
-                    vis[index+1] = 1;
+                    //vis[index+1] = 1;
                 }
                 
                 //jump left
-                if(index-1 >=0 and vis[index-1] == 0)
+                if(index-1 >=0 and ump.find(arr[index-1])!= ump.end())
                 {
                     qu.push(index-1);
-                    vis[index-1] = 1;
+                   // vis[index-1] = 1;
                 }
                 
                 //jump to equal
@@ -59,24 +55,18 @@ public:
                 {
                     for(auto i : ump[arr[index]])
                     {
-                        //if(i != index)
-                        if(vis[i] == 0)
+                        if(i != index)
+                       // if(vis[i] == 0)
                         {
+                            if(i == n-1)
+                                return steps;
                             qu.push(i);
-                            vis[i]=1;
+                           // vis[i]=1;
                         }
                     }
                     ump.erase(arr[index]);
                 }
-            }
-            if(flag == true)
-            {
-                break;
-            }
-            else
-                steps++;
-            
-            
+            }    
         }
         
         return steps;
