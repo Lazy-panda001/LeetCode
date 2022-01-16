@@ -3,8 +3,8 @@ public:
     int maxDistToClosest(vector<int>& seats) 
     {
         
-        // case : 1
-        int result =0;
+        // case : 1 ------>  [1,0,0,0,1,0,1]
+        int result =0; // count maximum consecutive zeros
         int count_0 =0;
         for(int i=0; i<seats.size(); i++)
         {
@@ -19,7 +19,7 @@ public:
             }
         }
         
-        // case 2;
+        // case : 2 ------>  [1,0,0,0,0,0,0,0,0,0,0]
         
         int right =0;
         for(int i=seats.size()-1; i>=0; i--)
@@ -35,7 +35,7 @@ public:
         }
         
         
-        // case :3
+        // case : 3 ------> [0,0,0,0,0,0,0,0,0,1]
         int left=0;
         for(int i=0; i<seats.size(); i++)
         {
@@ -43,13 +43,13 @@ public:
             {
                 left++;
             }
-            else
+            else //seats[i] == 1
             {
                 break;
             }
         }
         
-        int final_answer = (result+1)/2;
+        int final_answer = (result+1)/2;  // Alex will seat in middle
         final_answer = max({final_answer , left , right});
         return final_answer;
     }
