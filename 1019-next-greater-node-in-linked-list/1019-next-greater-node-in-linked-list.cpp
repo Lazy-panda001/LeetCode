@@ -26,8 +26,11 @@ public:
         
         ListNode* temp = head;
         int n = find_length(head);
+        
         vector<int> nums(n);
+        
         int k=0;
+        
         while(temp)
         {
             nums[k] = temp->val;
