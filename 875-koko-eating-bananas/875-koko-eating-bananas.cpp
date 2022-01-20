@@ -7,13 +7,7 @@ public:
         
         for(int i=0; i<nums.size(); i++)
         {
-            int div = nums[i] / k;
-            total_time +=div;
-            if(nums[i] % k != 0)
-            {
-                total_time++;
-            }
-          
+            total_time +=(long long) (ceil(nums[i]*1.0 / k)); 
         }
         
         if(total_time <= hour)
