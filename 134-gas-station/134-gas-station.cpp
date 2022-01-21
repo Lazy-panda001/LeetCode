@@ -29,6 +29,6 @@ public:
             }
         }
         
-        return (start_pos) % gas.size();
+        return (start_pos);
     }
 };
