@@ -15,31 +15,20 @@ public:
             return -1;
         }
         
-        vector<int> diff(gas.size());
-        for(int i=0; i<gas.size();i++)
+        int start_pos=0;
+        int right_now_gas = 0;
+        for(int i=0; i<gas.size(); i++)
         {
-            diff[i] = gas[i] - cost[i];
-        }
-        
-        vector<int>pf_sum(gas.size());
-        
-        pf_sum[0] = diff[0];
-        
-        for(int i=1; i<gas.size(); i++)
-        {
-            pf_sum[i] = pf_sum[i-1] + diff[i];
-        }
-        
-        int min_val = INT_MAX;
-        int index=0;
-        for(int i=0; i<pf_sum.size(); i++)
-        {
-            if(pf_sum[i] <min_val)
+            right_now_gas +=gas[i];
+            right_now_gas -=cost[i];
+            
+            if(right_now_gas < 0)
             {
-                min_val = pf_sum[i];
-                index = i;
+                start_pos = i+1;
+                right_now_gas=0;
             }
         }
-        return (index+1) % gas.size();
+        
+        return (start_pos) % gas.size();
     }
 };
