@@ -21,8 +21,9 @@ class Solution
         {
             return false;
         }
+        
         int i=0;
-        for(; i<n; i++)
+        for(; i<n;)
         {
             char ch = str[i];
             
@@ -54,6 +55,7 @@ class Solution
                 else
                     stk.pop();
             }
+        i++;
         }
         
         if(stk.empty() == true)
