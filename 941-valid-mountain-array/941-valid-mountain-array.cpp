@@ -2,6 +2,7 @@ class Solution {
 public:
     bool validMountainArray(vector<int>& arr) 
     {
+        // Corner case
         if(arr.size() <3)
         {
             return false;
@@ -9,6 +10,7 @@ public:
         
         int n = arr.size();
         
+        // if any repeatative we get then it is not strictly increasing
         for(int i=0; i<n-1; i++)
         {
             if(arr[i] == arr[i+1])
@@ -30,11 +32,13 @@ public:
         }
         
       //  cout<<max_value_index<<" ";
+        // maximum_value_index should not be both end side of array
         if(max_value_index == n-1 or max_value_index == 0)
         {
             return false;
         }
         
+        // compare with peek element
         for(int i=0; i<max_value_index; i++)
         {
             if(arr[i] > arr[max_value_index] or arr[i] > arr[i+1])
