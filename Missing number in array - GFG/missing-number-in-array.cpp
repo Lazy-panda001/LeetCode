@@ -12,9 +12,23 @@ using namespace std;
 
 class Solution{
   public:
-    int MissingNumber(vector<int>& array, int n) 
+    int MissingNumber(vector<int>& arr, int n) 
     {
         // Your code goes here
+        // space : O(1)
+        int total_sum = 0;
+        for(int i=0; i<n-1; i++)
+        {
+            total_sum +=arr[i];
+        }
+        
+       // cout<<total_sum<<endl;
+        int natural_sum = (n*(n+1))/2;
+      //  cout<<natural_sum<<" ";
+        
+        return (natural_sum - total_sum);
+        
+        /*// Space: O(n)
         vector<int> res(n+1,0);
         
         for(int i=0; i<array.size(); i++)
@@ -28,8 +42,7 @@ class Solution{
             {
                 return i;
             }
-        }
-        return 0;
+        }*/
     }
 };
 
