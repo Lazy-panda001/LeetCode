@@ -35,15 +35,41 @@ public:
         vector<int>list2;  // for 2nd list
         inorder(root2, list2);
         
-        vector<int> merge;
+        vector<int> merge(list1.size() + list2.size());
         
-        for(auto it:list1)
+        int i=0, j=0, k=0;
+        
+        while(i<list1.size() and j < list2.size())
+        {
+            if(list1[i] <= list2[j])
+            {
+                merge[k] = list1[i];
+                k++;
+                i++;
+            }
+            else if(list2[j] <= list1[i])
+            {
+                merge[k] = list2[j];
+                k++;j++;
+            }
+        }
+        
+        while(i<list1.size())
+        {
+            merge[k++] = list1[i++];
+        }
+        while(j < list2.size())
+        {
+            merge[k++] = list2[j++];
+        }
+        
+        return merge;
+      
+        
+        /*for(auto it:list1)
         {
             merge.push_back(it);
         }
-        
-     //   return merge;
-        
         for(auto it : list2)
         {
             merge.push_back(it);
@@ -51,6 +77,6 @@ public:
         
         sort(merge.begin(), merge.end());
         
-        return merge;
+        return merge;*/
     }
 };
