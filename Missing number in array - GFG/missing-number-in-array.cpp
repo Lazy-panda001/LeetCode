@@ -15,24 +15,21 @@ class Solution{
     int MissingNumber(vector<int>& array, int n) 
     {
         // Your code goes here
+        vector<int> res(n+1,0);
         
-      // vector<int>res(n+1,0);
+        for(int i=0; i<array.size(); i++)
+        {
+            res[array[i]]++;
+        }
         
-       int res[n+1]={0};
-      
-	    for(int i=0;i<array.size();i++)
-	    {
-		    res[array[i]]++;
-	    }
-	    
-	    for(int i=1;i<=n;i++)
-	    {
-		    if(res[i]==0)
-		    {
-			    return i;
-		    }
-	    }
-	    
+        for(int i=1; i<=n; i++)
+        {
+            if(res[i] == 0)
+            {
+                return i;
+            }
+        }
+        return 0;
     }
 };
 
