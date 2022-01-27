@@ -45,7 +45,7 @@ class Solution{
         res.push_back(arr[n-1]);
         return res;*/
         
-        // Optimised TC : o(n) and SC : o(n)
+        // Optimised TC : o(n) and SC : o()
         
       
         
@@ -65,9 +65,9 @@ class Solution{
         {
             if(arr[i] >= curr_leader )
             {
-                res.push_back(arr[i]);
                 curr_leader = arr[i];
-               
+                res.push_back(arr[i]);
+              
             }
         }
         
