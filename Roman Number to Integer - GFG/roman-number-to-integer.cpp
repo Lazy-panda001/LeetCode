@@ -26,8 +26,8 @@ class Solution {
         
         int num = 0;
         int sum = 0;
-        
-        for(int i=0; i<n;)
+        int i=0;
+        while(i<n)
         {
             num=0;
             if(i==n-1 or ump[str[i]] >= ump[str[i+1]])  
