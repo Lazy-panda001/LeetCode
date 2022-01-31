@@ -29,6 +29,7 @@ class Solution {
         
         for(int i=0; i<n;)
         {
+            num=0;
             if(i==n-1 or ump[str[i]] >= ump[str[i+1]])  
             {
                 num = ump[str[i]];
