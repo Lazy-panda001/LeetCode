@@ -32,16 +32,15 @@ class Solution {
             num=0;
             if(i==n-1 or ump[str[i]] >= ump[str[i+1]])  
             {
-                num = ump[str[i]];
+                sum += ump[str[i]];
                 i++;
             }
             else  //  ump[str[i]] < ump[str[i+1]]
             {
-                num = ump[str[i+1]] - ump[str[i]];
+                sum += ump[str[i+1]] - ump[str[i]];
                 i=i+2;
             }
             
-            sum = sum+num;
         }
         
         return sum;
