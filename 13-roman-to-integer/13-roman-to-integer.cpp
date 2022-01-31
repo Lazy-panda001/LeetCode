@@ -2,7 +2,7 @@ class Solution {
 public:
     int romanToInt(string str) 
     {
-        unordered_map<char,int> ump;
+            unordered_map<char,int> ump;
         ump.insert(make_pair('I' , 1));
         ump.insert(make_pair('V' , 5));
         ump.insert(make_pair('X' , 10));
@@ -13,23 +13,21 @@ public:
         
         int n = str.size();
         
-        int num = 0;
         int sum = 0;
-        
-        for(int i=0; i<n;)
+        int i=0;
+        while(i<n)
         {
-            if(i==n-1 or ump[str[i]] >= ump[str[i+1]])
+            if(i==n-1 or ump[str[i]] >= ump[str[i+1]])  
             {
-                num = ump[str[i]];
+                sum += ump[str[i]];
                 i++;
             }
-            else
+            else  //  ump[str[i]] < ump[str[i+1]]
             {
-                num = ump[str[i+1]] - ump[str[i]];
+                sum += ump[str[i+1]] - ump[str[i]];
                 i=i+2;
             }
             
-            sum = sum+num;
         }
         
         return sum;
