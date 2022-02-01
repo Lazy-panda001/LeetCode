@@ -12,7 +12,7 @@ class Solution{
     
     sort(arr.begin(), arr.end());
     
-    for(int i=0; i<= n-m; i++)
+    for(int i=0; i<n-m+1; i++)
     {
         long long minimum = arr[i];
         long long max = arr[i+m-1];
