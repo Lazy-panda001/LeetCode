@@ -14,6 +14,7 @@ public:
         {
             return nullptr;
         }
+        
         ListNode* slow = head;
         ListNode* fast = head;
         
@@ -22,15 +23,15 @@ public:
             slow = slow->next;
             fast = fast->next->next;
             
-            if(slow == fast)
+            if(slow == fast) // check if any cycle hay ya nahi
             {
                 slow = head;
-                while(slow != fast)
+                while(slow != fast)  // if yes then find that join node
                 {
                     slow = slow->next;
                     fast = fast->next;
                 }
-                return slow;
+                return slow; // return fast;
             }
             else
             {
