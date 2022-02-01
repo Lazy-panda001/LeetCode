@@ -10,10 +10,11 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) 
     {
-        if(head == nullptr or head->next == nullptr)
+       if(head == nullptr or head->next == nullptr)
         {
             return false;
         }
+        
         if(head->next == head)
         {
             return true;
