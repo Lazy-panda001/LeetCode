@@ -100,8 +100,8 @@ class Solution
                     fast->next=nullptr;
                 }
                 
-                else  // not full circular LL
-                {    slow = head;
+                else if(slow == fast)  // not full circular LL
+                {   slow = head;
                     while(slow->next != fast->next)
                     {
                         slow= slow->next;
