@@ -14,13 +14,13 @@ public:
 	
 static bool compare(string s1,string s2)
 	{
-	    return (s1+s2)> (s2+s1);
+	    return (s1+s2) > (s2+s1);
 	}
 	
 	string printLargest(vector<string> &arr) 
 	{
 	    // code here
-	    sort(arr.begin() , arr.end(), compare);
+	    sort(arr.begin() , arr.end() , compare);
 	    
 	    string res="";
 	    
