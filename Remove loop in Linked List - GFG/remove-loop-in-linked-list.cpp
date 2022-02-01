@@ -89,9 +89,9 @@ class Solution
             fast = fast->next->next;
             
             // check loop
-            if(slow == fast)
+            if(slow == fast) // if yes then two cases happen
             {
-                if(slow == head)
+                if(slow == head)  // if slow is already in head means full single circular LL
                 {
                     while(fast->next != slow)
                     {
@@ -100,7 +100,7 @@ class Solution
                     fast->next=nullptr;
                 }
                 
-                else
+                else  // not full circular LL
                 {    slow = head;
                     while(slow->next != fast->next)
                     {
