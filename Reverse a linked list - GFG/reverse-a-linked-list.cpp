@@ -47,7 +47,8 @@ class Solution
             q->next = r;
         }
         
-        return q;
+        head = q;
+        return head;
     }
     
 };
