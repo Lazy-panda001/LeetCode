@@ -75,17 +75,16 @@ int getNthFromLast(Node *head, int n)
 {
        // Your code here
        int len = find_length(head);
+        Node* curr = head;
        
-       if(len < n)
+        int val = len - n; 
+        
+       if(val < 0)
        {
            return -1;
        }
        
-       int val = len - n;
-       
-         Node* curr = head;
-         
-       if(val == 0)
+       else if(val == 0)
        {
            return head->data;
        }
