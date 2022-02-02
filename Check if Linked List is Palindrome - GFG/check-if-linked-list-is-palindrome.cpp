@@ -38,28 +38,23 @@ class Solution{
         stack<int> stk;
         Node* temp = head;
         
-        int len=0;
+       
         while(temp)
         {
-            len++;
+            
             stk.push(temp->data);
             temp = temp->next;
         }
         
-        if(len != stk.size())
+        temp = head;
+        while(temp)
         {
-            return false;
-        }
-        
-        Node* temp1 = head;
-        while(temp1)
-        {
-            if(temp1->data != stk.top())
+            if(temp->data != stk.top())
             {
                 return false;
             }
             
-            temp1 = temp1->next;
+            temp = temp->next;
             stk.pop();
         }
         
