@@ -8,7 +8,8 @@ public:
         {
             for(int j=0; j<n; j++)
             {
-                ump[nums1[i] + nums2[j]]++;
+                int sum = nums1[i] + nums2[j];
+                ump[sum]++;
             }
         }
         
@@ -18,16 +19,16 @@ public:
         {
             for(int l=0; l<n; l++)
             {
-                if(ump.find(-(nums3[k] + nums4[l])) != ump.end() )
+                int sum = nums3[k] + nums4[l];
+                
+                if(ump.find(-sum) != ump.end())
                 {
-                    tuples += ump[-(nums3[k] + nums4[l])];
+                   // tuples += ump[-(nums3[k] + nums4[l])];
+                    tuples +=ump[-sum];
                 }
             }
         }
         
-        return tuples;
-        
-        
-        
+        return tuples;   
     }
 };
