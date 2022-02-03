@@ -67,32 +67,36 @@ class Solution{
         // return the head of intersection list
         // code here
        // return the head of intersection list
-       unordered_set<int> s;
-       while(head2)
-       {
-           s.insert(head2->data);
-           head2=head2->next;
-       }
-       vector<int> v;
-       while(head1)
-       {
-           if(s.find(head1->data)!=s.end())
-           v.push_back(head1->data);
-           head1=head1->next;
-       }
-       if(v.size()==0)
-       return NULL;
-       Node *head=new Node(v[0]);
-       Node *curr=head;
-       for(int i=1;i<v.size();i++)
-       {
-           Node *temp=new Node(v[i]);
-           curr->next=temp;
-           curr=curr->next;
-       }
-       curr->next=NULL;
-       return head;
+      unordered_set<int> ust;
+        while(head2)
+        {
+            ust.insert(head2->data);
+            head2 = head2->next;
+        }
         
+        Node* head = nullptr;
+        Node* curr = nullptr;
+        while(head1)
+        {
+            if(ust.find(head1->data) != ust.end())
+            {
+                if(head == nullptr)
+                {
+                    head = head1;
+                    curr = head;
+                }
+                else
+                {
+                    curr->next = head1;
+                    curr = curr->next;
+                }
+            }
+            head1 = head1->next;
+        }
+        
+        if(head != nullptr)
+            curr->next = nullptr;
+        return head;
     }
 };
 
