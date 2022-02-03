@@ -2,8 +2,9 @@ class Solution {
 public:
     int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) 
     {
-        unordered_map<int,int>ump;
         int n = nums1.size();
+        
+        unordered_map<int, int> ump;
         for(int i=0; i<n; i++)
         {
             for(int j=0; j<n; j++)
@@ -13,22 +14,22 @@ public:
             }
         }
         
-        int tuples=0;
+        int count_tuples=0;
         
-        for(int k=0; k<n; k++ )
+        for(int k=0; k<n; k++)
         {
-            for(int l=0; l<n; l++)
+            for(int l=0;l<n; l++)
             {
                 int sum = nums3[k] + nums4[l];
-                
                 if(ump.find(-sum) != ump.end())
                 {
-                   // tuples += ump[-(nums3[k] + nums4[l])];
-                    tuples +=ump[-sum];
+                    count_tuples += ump[-sum];
                 }
             }
         }
+        return count_tuples;
         
-        return tuples;   
+        
+        
     }
 };
