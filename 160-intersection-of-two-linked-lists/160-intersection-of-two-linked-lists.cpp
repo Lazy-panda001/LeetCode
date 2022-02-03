@@ -8,64 +8,64 @@
  */
 class Solution {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
+    
+    int find_length(ListNode* head)
     {
-        ListNode* p1 = headA;
-        ListNode* p2 = headB;
-        
-        // finding length for headA
-        int h1 = 0;
-        while(p1)
+    int len=0;
+    while(head)
+    {
+        len++;
+        head = head->next;
+    }
+    
+    return len;
+    }
+    
+    ListNode *getIntersectionNode(ListNode *head1, ListNode *head2) 
+    {
+    int len1 = find_length(head1);
+    int len2 = find_length(head2);
+    
+    int diff=0;
+    ListNode* temp1 , *temp2;  // for making perectly
+    
+    if(len1 > len2)
+    {
+        diff = len1 - len2;
+        temp1 = head1;  // major confusing place
+        temp2 = head2;
+    }
+    else
+    {
+        diff = len2 - len1;  
+        temp1 = head2;  // major confusing place
+        temp2 = head1; 
+    }
+    
+    while(diff--)
+    {
+        temp1 = temp1->next;
+    }
+    
+    if(temp1 == temp2)
+    {
+        return temp1;
+    }
+    
+    while(temp1 and temp2)
+    {
+        if(temp1->next == temp2->next)
         {
-            h1++;
-            p1 = p1->next;
-        }
-        
-        //finding length for headB
-        int h2=0;
-        while(p2)
-        {
-            h2++;
-            p2 = p2->next;
-        }
-        
-        ListNode* temp1, *temp2; // assign accordingly 
-        int diff=0;
-        if(h1>h2)
-        {
-            diff = h1- h2;
-            temp1 = headA;  // main confusing place
-            temp2 = headB;
+            return temp1->next;
         }
         else
         {
-            diff = h2 - h1;
-            temp1 = headB;  // main confusing place
-            temp2 = headA;
-        }
-        
-        while(diff--)
-        {
             temp1 = temp1->next;
+            temp2 = temp2->next;
         }
+    }
+    
+    return nullptr;
         
-        if(temp1 == temp2)
-        {
-            return temp1;
-        }
-        
-        while(temp1 and temp2)
-        {
-            if(temp1->next == temp2->next)
-            {
-                return temp1->next;
-            }
-            else
-            {
-                temp1 = temp1->next;
-                temp2 = temp2->next;
-            }
-        }
-        return nullptr;
     }
 };
