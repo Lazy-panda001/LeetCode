@@ -11,7 +11,7 @@ class Solution{
     {
         stack<pair<char,int>> stk;
         string ans="";
-         if(k==1)return ans;
+        if(k==1)return ans;
         
         for(int i=0; i<str.size(); i++)
         {
