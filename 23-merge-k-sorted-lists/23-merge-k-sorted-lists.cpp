@@ -12,14 +12,14 @@ class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) 
     {
-        priority_queue<int, vector<int>, greater<int>> maxH;
+        priority_queue<int, vector<int> , greater<int>> minH;
         
         for(int i=0; i<lists.size(); i++)
         {
             ListNode* temp = lists[i];
             while(temp != nullptr)
             {
-                maxH.push(temp->val);
+                minH.push(temp->val);
                 temp = temp->next;
             }
             
@@ -28,12 +28,12 @@ public:
         ListNode* dummy = new ListNode(-1);
         ListNode* curr = dummy;
         
-        while(!maxH.empty())
+        while(!minH.empty())
         {
-            ListNode* temp = new ListNode(maxH.top());
-            maxH.pop();
+            ListNode* temp = new ListNode(minH.top()); minH.pop();
             curr->next = temp;
             curr = curr->next;
+            
         }
         return dummy->next;
         
