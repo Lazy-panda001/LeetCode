@@ -7,9 +7,7 @@ public:
         {
             return 0;
         }
-        
-        vector<long long> digits;
-        
+
         if(num < 0) // means negative value
         {
             string str = to_string(num);
@@ -19,6 +17,8 @@ public:
         }
         else
         {
+            vector<long long> digits;
+            
             while(num > 0)
             {
                 digits.push_back(num % 10);
