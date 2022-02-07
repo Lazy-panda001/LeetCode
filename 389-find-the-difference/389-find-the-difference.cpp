@@ -2,27 +2,16 @@ class Solution {
 public:
     char findTheDifference(string s, string t) 
     {
-        vector<int> freq(26,0);
-        for(int i=0; i<s.size();i++)
-        {
-            freq[s[i]-'a']++;
-        }
+        string str = s+t;
+        cout<<str<<endl;
         
-        for(int i=0; i<t.size(); i++)
-        {
-            freq[t[i]-'a']--;
-        }
+        char single = 0;
         
-        char ch;
-        for(int i=0; i<26; i++)
+       for(auto ch : str)
         {
-            if(freq[i] != 0)
-            {
-                 ch = (char)(97+i);
-                break;
-            }
+            single = single ^ ch;
         }
+        return single;
         
-        return ch;
     }
 };
