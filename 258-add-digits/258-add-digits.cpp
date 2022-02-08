@@ -3,7 +3,7 @@ public:
     int addDigits(int num) 
     {
         int sum = 0;
-        
+        bool flag = 0;
         while(1)
         {
             while(num >0)
@@ -15,7 +15,8 @@ public:
             
             if( sum < 10) // we got single digit
             {
-                return sum;
+                flag = 1;
+                break;
             }
             else
             {
