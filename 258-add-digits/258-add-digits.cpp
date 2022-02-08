@@ -2,30 +2,14 @@ class Solution {
 public:
     int addDigits(int num) 
     {
-        int sum = 0;
-        bool flag = 0;
-        while(1)
+        if(num == 0)
+            return 0;
+        if(num % 9 == 0)
         {
-            while(num >0)
-            {
-                int rem = num % 10;
-                sum +=rem;
-                num = num / 10;
-            }
-            
-            if( sum < 10) // we got single digit
-            {
-                flag = 1;
-                break;
-            }
-            else
-            {
-                num = sum;
-                sum = 0;
-            }
+            return 9;
         }
         
-        return sum;
+        return num % 9;
         
     }
 };
