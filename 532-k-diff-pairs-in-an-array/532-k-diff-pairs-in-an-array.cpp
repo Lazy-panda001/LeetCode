@@ -2,38 +2,31 @@ class Solution {
 public:
     int findPairs(vector<int>& nums, int k) 
     {
-        sort(nums.begin(), nums.end());
         int n = nums.size();
-        int count_pairs=0;
-        int slow=0;
-        int fast=1;
         
-        while(slow < n and fast < n)
+        unordered_map<int,int> ump;
+        
+        for(int i=0; i<n; i++)
         {
-            if(abs(nums[slow] - nums[fast]) == k)
+            ump[nums[i]]++;
+        }
+        
+        int count_pairs=0;
+        
+        for(auto it : ump)
+        {
+            if(k == 0) // means we need repeated elements
             {
-                count_pairs++;
-                slow++;
-                fast++;
-                
-                // But if there is some repetition
-                while(fast < n and nums[fast] == nums[fast-1])
+                if(it.second >=2)
                 {
-                    fast++;
+                    count_pairs++;
                 }
             }
-            
-            else if(abs(nums[slow] - nums[fast]) < k)
+            else
             {
-                fast++;
-            }
-            else if(abs(nums[slow] - nums[fast]) > k)
-            {
-                slow++;
-                
-                if(fast - slow == 0)
+                if(ump.find(it.first - k) != ump.end())
                 {
-                    fast++;
+                    count_pairs++;
                 }
             }
         }
