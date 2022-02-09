@@ -16,11 +16,10 @@ public:
         for(auto it : ump)
         {
             if(k == 0) // means we need repeated elements
-            {
+            {    
                 if(it.second >=2)
-                {
                     count_pairs++;
-                }
+                
             }
             else
             {
