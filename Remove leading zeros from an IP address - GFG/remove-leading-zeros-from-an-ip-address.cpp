@@ -41,7 +41,7 @@ class Solution
      {
          return str.substr(i);
      }
-     return "0";
+     return to_string(0);
   }
     string newIPAdd (string str)
     {
@@ -53,7 +53,7 @@ class Solution
         
         for(int i=0; i<words.size(); i++)
         {
-            string temp = remove_zero(words[i]);
+            string temp = (remove_zero(words[i]));
             ans +=temp + '.';
         }
         
