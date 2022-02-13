@@ -106,7 +106,7 @@ class Solution
         while(!qu.empty())
         {
             int size = qu.size();
-              int max_element = INT_MIN;
+            int max_element = INT_MIN;
             for(int i=0; i<size; i++)
             {
                 Node* curr = qu.front();
