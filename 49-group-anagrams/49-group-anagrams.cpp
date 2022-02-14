@@ -10,8 +10,8 @@ public:
         {
             str = strs[i];
             
-            sort(str.begin(), str.end());
-            ump[str].push_back(strs[i]);
+            sort(strs[i].begin(), strs[i].end());
+            ump[strs[i]].push_back(str);
         }
         
         vector<vector<string>> res;
