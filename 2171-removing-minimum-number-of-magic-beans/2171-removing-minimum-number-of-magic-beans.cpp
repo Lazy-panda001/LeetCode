@@ -15,7 +15,7 @@ public:
         
         for(long long i=0; i<n; i++)
         {
-            long long curr = total_sum - (n-i)*(long long)beans[i] * 1LL;
+            long long curr = total_sum - (n-i)*(long long)beans[i] * 1ll;
             curr_sum = min(curr_sum , curr);
         }
         
