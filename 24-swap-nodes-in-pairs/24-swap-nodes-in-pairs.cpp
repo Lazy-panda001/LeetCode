@@ -12,40 +12,29 @@ class Solution {
 public:
     ListNode* swapPairs(ListNode* head) 
     {
-        vector<int> nodes;
-        ListNode* temp = head;
-        
-        while(temp)
+        if(head == nullptr or head->next == nullptr)
         {
-            nodes.push_back(temp->val);
-            temp = temp->next;
+            return head;
         }
         
-        for(int i=1; i<nodes.size(); i = i+2)
+        ListNode* curr = head->next , *prev = head;
+        head = curr;
+        
+        while(true)
         {
-            swap(nodes[i-1],nodes[i]);
+            ListNode* temp = curr->next;
+            curr->next = prev;
+            
+            if(temp == nullptr or temp->next == nullptr)
+            {
+                prev->next = temp;
+                break; 
+            }
+            
+            prev->next = temp->next;
+            prev = temp;
+            curr = temp->next;
         }
-        
-        for(auto it:nodes)
-        {
-            cout<<it<<" ";
-        }
-        cout<<endl;
-        
-        ListNode* dummy = new ListNode(-1);
-        ListNode* prev = dummy;
-        int i=0;
-        int size = nodes.size();
-        while(size--)
-        {
-            ListNode* curr = new ListNode(nodes[i++]);
-            prev->next = curr;
-            prev = prev->next;
-        }
-        
-        
-        
-        return dummy->next;
-        
+        return head;
     }
 };
