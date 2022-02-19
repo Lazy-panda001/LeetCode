@@ -11,7 +11,7 @@ public:
         long long i=2;
         long long curr_sum = 0;
         
-        while(curr_sum + i <= num)
+        while((curr_sum + i)*1LL <= num)
         {
             res.push_back(i);
             curr_sum +=i;
