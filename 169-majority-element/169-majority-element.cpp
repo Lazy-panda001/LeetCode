@@ -4,22 +4,20 @@ public:
     {
         int n = nums.size();
         unordered_map<int,int> ump;
-        
-        int ans=-1;
-        for(int i=0; i<n; i++)
+        for(int i=0; i<n;i++)
         {
             ump[nums[i]]++;
         }
         
-        for(auto it: ump)
+        
+        for(auto it:ump)
         {
-            int val = it.second;
-            if(val > ceil(n/2))
+            if(it.second > ceil(n/2))
             {
-                ans = it.first;
+                return it.first;
             }
         }
-        return ans;
+        return -1;
         
     }
 };
