@@ -1,61 +1,59 @@
 class Solution {
 public:
-    string repeatLimitedString(string s, int repeatLimit) 
-    {
-        unordered_map<char, int> ump;
-        for(int i=0; i<s.size(); i++)
-        {
-            ump[s[i]]++;
-        }
-        
-        priority_queue<pair<char,int>>maxH;
-        
+    string repeatLimitedString(string s, int repeatLimit) {
+     unordered_map<char , int> ump;
+     for(int i=0; i<s.size(); i++)
+     {
+         ump[s[i]]++;
+     }
+        priority_queue<pair<char,int>> pq;
         for(auto it : ump)
         {
-            maxH.push({it.first, it.second});
+
+            pq.push({it.first, it.second});
         }
-        
-        string res="";
-        
-        while(!maxH.empty())
+            
+        string ans = "";
+        while(!pq.empty())
         {
-            char c1 = maxH.top().first;
-            int n1 = maxH.top().second;
-            maxH.pop();
+            char chr1 = pq.top().first;
+            int frq1 = pq.top().second;
+            pq.pop();
+           // cout<<chr1 <<endl;
+           
             
-            int len = min(repeatLimit , n1);
-            
-            for(int i=0; i<len; i++)
+            int times = min(frq1,repeatLimit);
+            for(int j=0; j<times; j++)
             {
-                res +=c1;
+                ans +=chr1;
             }
             
-            if(n1-len>0)
+            frq1 = frq1-times;
+            if(frq1>0)
             {
-                if(!maxH.empty())
+                if(!pq.empty())
                 {
-                    char c2 = maxH.top().first;
-                    int n2 = maxH.top().second;
-                    maxH.pop();
+                      //second largest
+                    char chr2 = pq.top().first;
+                    int frq2 = pq.top().second;
+                    pq.pop();
+                    //add one occurence
                     
-                    res +=c2;
+                    ans += chr2;
                     
-                    maxH.push({c1 , n1-len});
-                    if(n2-1 > 0)
+                    pq.push({chr1, frq1});
+                    if(frq2-1 > 0)
                     {
-                        maxH.push({c2,n2-1});
-                    }
-                    
+                        pq.push({chr2 , frq2-1});
+                    } 
                 }
                 else
                 {
-                    return res;
+                    return ans;
                 }
-                     
             }
+              
         }
-        
-        return res;
-        
+        return ans;
     }
 };
