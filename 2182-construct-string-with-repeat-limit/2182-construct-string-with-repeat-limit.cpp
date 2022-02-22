@@ -1,58 +1,59 @@
 class Solution {
 public:
     string repeatLimitedString(string s, int repeatLimit) {
-     unordered_map<char , int> ump;
-     for(int i=0; i<s.size(); i++)
+     int cnt[26] = {0};
+     for(auto it:s)
      {
-         ump[s[i]]++;
+         cnt[it - 'a']++;
      }
-        priority_queue<pair<char,int>> pq;
-        for(auto it : ump)
+        priority_queue<pair<int,int>> pq;
+        for(int i=0; i<26; i++)
         {
-
-            pq.push({it.first, it.second});
+            if(cnt[i]>0)
+            {
+            pq.push({i , cnt[i]});
+            }
         }
             
         string ans = "";
         while(!pq.empty())
         {
-            char chr1 = pq.top().first;
+            int chr1 = pq.top().first;
             int frq1 = pq.top().second;
             pq.pop();
            // cout<<chr1 <<endl;
-           
-            
-            int times = min(frq1,repeatLimit);
-            for(int j=0; j<times; j++)
+            if(ans.size() == 0 || ans.back() != (char)(chr1 + 'a'))
             {
-                ans +=chr1;
-            }
-            
-            frq1 = frq1-times;
-            if(frq1>0)
-            {
-                if(!pq.empty())
+                int times = min(frq1,repeatLimit);
+                for(int j=0; j<times; j++)
                 {
-                      //second largest
-                    char chr2 = pq.top().first;
-                    int frq2 = pq.top().second;
-                    pq.pop();
-                    //add one occurence
-                    
-                    ans += chr2;
-                    
-                    pq.push({chr1, frq1});
-                    if(frq2-1 > 0)
-                    {
-                        pq.push({chr2 , frq2-1});
-                    } 
+                    ans +=(char)(chr1 + 'a');
                 }
-                else
+                frq1 = frq1-times;
+                if(frq1)
                 {
-                    return ans;
+                    pq.push({chr1,frq1});
                 }
             }
-              
+            else
+            {
+                if(pq.size() == 0)
+                {
+                    break;
+                }
+                //second largest
+                int chr2 = pq.top().first;
+                int frq2 = pq.top().second;
+                pq.pop();
+                //add one occurence
+                ans +=(char)(chr2 + 'a');
+                frq2--;
+                if(frq2)
+                {
+                    pq.push({chr2,frq2});
+                }
+                pq.push({chr1,frq1});
+            }
         }
         return ans;
     }
