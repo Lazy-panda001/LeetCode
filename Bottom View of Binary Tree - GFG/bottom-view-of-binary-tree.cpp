@@ -97,33 +97,44 @@ class Solution {
   public:
     vector <int> bottomView(Node *root) {
         // Your Code Here
-        vector<int> res;
-        queue<pair<Node*,int>> qu;
-        map<int,int> mp;
         
-        qu.push({root,0}); // node,horizontal distance
+        // BFS + hash map
+        vector<int> res;
+        if(root == nullptr)
+        {
+            return res;
+        }
+        
+        queue<pair<Node* , int>> qu;
+        map<int,int>mp;
+        
+        qu.push({root , 0});
         
         while(!qu.empty())
         {
-            Node* curr = qu.front().first;
-            int hd = qu.front().second;
+            int size=qu.size();
             
-            qu.pop();
-            
-            mp[hd] = curr->data;  // only  important line
-            
-            if(curr->left)
+            for(int i=0; i<size;i++)
             {
-                qu.push({curr->left, hd-1});
-            }
-            
-            if(curr->right)
-            {
-                qu.push({curr->right, hd+1});
+                Node* curr = qu.front().first;
+                int hd = qu.front().second;
+                qu.pop();
+                
+                mp[hd] = curr->data;
+                
+                if(curr->left)
+                {
+                    qu.push({curr->left , hd-1});
+                }
+                
+                if(curr->right)
+                {
+                    qu.push({curr->right , hd+1});
+                }
             }
         }
         
-        for(auto it:mp)
+        for(auto it : mp)
         {
             res.push_back(it.second);
         }
