@@ -125,7 +125,7 @@ class Solution
                 qu.pop();
             
                 if(mp.find(hd) == mp.end()) // only extra check in Top view, not in Bottom view
-                mp[hd] = curr->data;
+                    mp[hd] = curr->data;
             
                 if(curr->left)
                 {
