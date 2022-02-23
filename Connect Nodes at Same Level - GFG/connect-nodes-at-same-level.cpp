@@ -173,7 +173,7 @@ class Solution
                   }
               }
               
-              else if(!qu.empty())
+              else if(!qu.empty() and temp == nullptr)
               {
                   qu.push(nullptr);
               }
