@@ -49,7 +49,7 @@ public:
         {
             prev->next = head1;
         }
-        else   
+        else if(head2)   
         {
             prev->next = head2;
         }
