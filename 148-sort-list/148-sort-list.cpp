@@ -43,34 +43,16 @@ public:
             return head1;
         }
         
-        ListNode* dummy = new ListNode(-1);
-        ListNode* prev = dummy;
-        
-        while(head1 and head2)
+       if(head1->val < head2->val)
+       {
+           head1->next = merge(head1->next , head2);
+           return head1;
+       }
+        else
         {
-            if(head1->val < head2->val)
-            {
-                prev->next = head1;
-                head1 = head1->next;
-            }
-            else
-            {
-                prev->next = head2;
-                head2 = head2->next;
-            }
-            prev = prev->next;
+            head2->next = merge(head1 , head2->next);
+            return head2;
         }
-        
-        if(head1 != nullptr)
-        {
-            prev->next = head1;
-        }
-        if(head2 != nullptr)
-        {
-            prev->next = head2;
-        }
-        
-        return dummy->next;
     }
     
     ListNode* sortList(ListNode* head) 
