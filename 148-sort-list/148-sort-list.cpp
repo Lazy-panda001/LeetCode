@@ -19,7 +19,7 @@ public:
         
         ListNode* slow = head, *fast = head;
         
-        while(fast->next and fast->next->next)
+        while(slow and fast->next and fast->next->next)
         {
             slow = slow->next;
             fast = fast->next->next;
@@ -46,30 +46,28 @@ public:
         ListNode* dummy = new ListNode(-1);
         ListNode* prev = dummy;
         
-        ListNode* temp1 = head1;
-        ListNode* temp2 = head2;
-        while(temp1 and temp2)
+        while(head1 and head2)
         {
-            if(temp1->val < temp2->val)
+            if(head1->val < head2->val)
             {
-                prev->next = temp1;
-                temp1 = temp1->next;
+                prev->next = head1;
+                head1 = head1->next;
             }
             else
             {
-                prev->next = temp2;
-                temp2 = temp2->next;
+                prev->next = head2;
+                head2 = head2->next;
             }
             prev = prev->next;
         }
         
-        if(temp1 != nullptr)
+        if(head1 != nullptr)
         {
-            prev->next = temp1;
+            prev->next = head1;
         }
-        if(temp2 != nullptr)
+        if(head2 != nullptr)
         {
-            prev->next = temp2;
+            prev->next = head2;
         }
         
         return dummy->next;
@@ -81,7 +79,6 @@ public:
         {
             return head;
         }
-        
         ListNode* mid = middle(head);
         ListNode* nhead = mid->next;
         mid->next = nullptr;
