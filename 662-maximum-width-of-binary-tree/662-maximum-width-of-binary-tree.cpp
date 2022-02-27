@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) 
@@ -29,8 +30,8 @@ public:
             
             long long left_range = qu.front().second;
           
-            
             long long right_range = 0; // start with 0 for eac level
+            
             for(int i=0; i<size; i++)
             {
                 auto it = qu.front(); qu.pop();
