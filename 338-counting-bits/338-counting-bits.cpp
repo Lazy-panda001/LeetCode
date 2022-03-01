@@ -4,19 +4,19 @@ public:
     {
         vector<int> res(n+1);
         
-        res[0] = 0;
+        res[0] = 0; // for zero answer will be 0;
         
         for(int i=1; i<=n; i++)
         {
-            int sum=0;
+            int count_1 =0;
             int num = i;
             
             while(num !=0)
             {
-                sum += num % 2;
+                count_1 += num % 2;
                 num = num /2;
             }
-            res[i] = sum;
+            res[i] = count_1;
         }
         return res;
         
