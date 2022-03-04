@@ -2,11 +2,11 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) 
     {
-        int least_stock_price = INT_MAX;
+        int least_stock_price = INT_MAX; // initially
         
-        int each_day_profit = 0;
+        int each_day_profit = 0; // each day ka profit calculate kiya
         
-        int maximum_profit = 0;
+        int maximum_profit = 0;  // finally total profit calculate kiya
         
         for(int i=0; i<prices.size(); i++)
         {
@@ -20,8 +20,6 @@ public:
             maximum_profit = max(maximum_profit , each_day_profit);
         }
         
-        return maximum_profit;
-        
-        
+        return maximum_profit; 
     }
 };
