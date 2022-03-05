@@ -32,7 +32,7 @@ public:
         
       
         
-        stringstream geek(number);
+    stringstream geek(number);
     int ans = 0;
     geek >> ans;
       
@@ -66,7 +66,6 @@ public:
         {
             res.push_back(it.first);
         }
-        cout<<endl;
         
         return res;
         
