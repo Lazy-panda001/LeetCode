@@ -38,6 +38,7 @@ public:
       
         
         return ans;*/
+        
         int ans=0;int i=1;
     while(num>0){
         int a=num%10;
