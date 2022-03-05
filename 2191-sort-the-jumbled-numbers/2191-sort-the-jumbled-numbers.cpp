@@ -14,7 +14,7 @@ public:
             int val = ump[num];
             return val;
         }
-        
+        /*
         while(num !=0)
         {
             int rem = num % 10;
@@ -37,7 +37,17 @@ public:
     geek >> ans;
       
         
-        return ans;
+        return ans;*/
+        int ans=0;int i=1;
+    while(num>0){
+        int a=num%10;
+        int mix=ump[a];
+        num=num/10;
+        ans=ans+mix*i;
+        i=i*10;
+    }
+    return ans;
+
        
     }
     
