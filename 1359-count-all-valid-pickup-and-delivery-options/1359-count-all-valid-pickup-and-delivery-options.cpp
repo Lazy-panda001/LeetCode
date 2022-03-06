@@ -5,11 +5,17 @@ public:
         long res = 1;
         long mod = 1000000007;
         
-        for(int i=1; i<=n; i++)
+        if(n == 1)
+        {
+            return 1;
+        }
+        
+        for(int i=2; i<=n; i++)
         {
             // first find factoria;
             res = (res * i) % mod;
             
+            // then value
             res = res * (2*i-1);
             
             res = res % mod;
