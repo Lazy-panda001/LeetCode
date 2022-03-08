@@ -12,7 +12,8 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* head1, ListNode* head2) 
     {
-        if(head1 == nullptr and head2 == nullptr)
+        // Iterative code
+        /*if(head1 == nullptr and head2 == nullptr)
         {
             return nullptr;
         }
@@ -54,6 +55,31 @@ public:
         }
         
         return dummy->next;
+        */
+        
+        // Recursive code : 
+        if(head1 == nullptr and head2 == nullptr)
+        {
+            return nullptr;
+        }
+        if(head1==nullptr)
+        {
+            return head2;
+        }
+        if(head2 == nullptr)
+        {
+            return head1;
+        }
+        if(head1->val < head2->val)
+        {
+            head1->next = mergeTwoLists(head1->next , head2);
+            return head1;
+        }
+        else
+        {
+            head2->next = mergeTwoLists(head1, head2->next);
+            return head2;
+        }
         
     }
 };
