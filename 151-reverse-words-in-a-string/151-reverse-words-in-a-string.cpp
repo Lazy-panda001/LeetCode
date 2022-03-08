@@ -2,43 +2,42 @@ class Solution {
 public:
     string reverseWords(string str) 
     {
-        string res="";
-        
         int n = str.size();
         
-        int i=0;
+        string res="";
         
-        while(i < n)
+        int i=0;
+        while(i<n)
         {
+            // take care if there any space
             if(str[i] == ' ')
             {
-                while(i<n and str[i] ==' ')
+                while(i<n and str[i] == ' ')
                 {
                     i++;
                 }
-                
                 if(i == n)
                 {
-                    break;
+                    break; // no string left
                 }
             }
             
-            // now i is pointing some character
-            string temp="";
+            // means i will point to some character of a string
+            string temp ="";
+            
             while(i<n and str[i] != ' ')
             {
-                temp +=str[i];
-                i++;
+                temp +=str[i++];
             }
             
             if(res.size() == 0)
             {
                 res = temp;
             }
-            
             else
-                res = temp + ' ' + res;
-               
+            {
+                res = temp + " " + res;
+            }
         }
         
         return res;
