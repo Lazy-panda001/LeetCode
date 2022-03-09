@@ -29,7 +29,7 @@ public:
                     after_curr = after_curr->next;
                 }
                 
-                if(prev == nullptr)
+                if(prev == nullptr) // from the head pointer only, all values are repeating
                 {
                     head = after_curr;
                 }
@@ -45,10 +45,9 @@ public:
             
             curr = after_curr;
             
-            if(after_curr)
-            {
-                after_curr = curr->next;
-            }
+            if(after_curr != nullptr)
+                after_curr = after_curr->next;
+            
         }
         
         return head;
