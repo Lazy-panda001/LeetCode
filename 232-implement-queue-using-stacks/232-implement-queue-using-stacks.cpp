@@ -1,71 +1,64 @@
 class MyQueue {
 public:
-  
-  stack<int> s1,s2;
-    // s1 ==> input queue ,, s2==> output queue
-    
-  
-    /** Initialize your data structure here. */
+    stack<int> stk1; // for push 
+    stack<int> stk2;  // for poping
     MyQueue() {
         
     }
     
-    /** Push element 'x' through the 'rear'. */
     void push(int x) 
     {
-      s1.push(x);
-      
         
+        stk1.push(x);
     }
     
-    /** Removes the element 'x' from  'front' of the queue and returns that element. */
     int pop() 
     {
-      if(!s2.empty()) // If S2 queue is not empty then pop from S2
-      {
-        int val = s2.top();
-        s2.pop();
-        return val;
-      }
-        
-      else
-      {
-        while(s1.size())
+        if(!stk2.empty())
         {
-          s2.push(s1.top());
-          s1.pop();
+            int val = stk2.top();
+            stk2.pop();
+            return val;
         }
-      }
+        else // stk2 empty
+        {
+            while(stk1.size())
+            {
+                stk2.push(stk1.top());
+                stk1.pop();
+            }
+        }
         
-      int val2 = s2.top(); // now pop from S2
-      s2.pop();
-      return val2;
+        int val = stk2.top();
+        stk2.pop();
+        return val;
+            
         
     }
     
-    /** Get the front element. */
     int peek() 
     {
-      if(!s2.empty())
-      {
-        return s2.top();
-      }
-      else
-      {
-        while(s1.size())
+         if(!stk2.empty())
         {
-          s2.push(s1.top());
-          s1.pop();
+            return stk2.top();
         }
-      }
-      return s2.top();
+        else // stk2 empty
+        {
+            while(stk1.size())
+            {
+                stk2.push(stk1.top());
+                stk1.pop();
+            }
+        }
+        
+        return stk2.top();
+       
         
     }
     
-    /** Returns whether the queue is empty. */
     bool empty() 
     {
-      return s1.empty() && s2.empty();
+        return stk1.empty() and stk2.empty();
         
     }
 };
