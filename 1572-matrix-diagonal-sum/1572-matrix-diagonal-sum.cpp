@@ -11,7 +11,8 @@ public:
             return mat[0][0];
         }
         
-      /*  for(int i=0; i<row; i++)
+      /*  TC : O(n^2)
+      for(int i=0; i<row; i++)
         {
             for(int j=0; j<col; j++)
             {
@@ -22,11 +23,14 @@ public:
             }
         }*/
         
+        // TC : O(N)
         for(int i=0; i<row; i++)
         {
             sum +=mat[i][i] + mat[i][row -1-i];
         }
         cout<<sum<<endl;
+        
+        
         if(row % 2 == 1)
         {
             sum = sum - mat[row/2][row/2];
