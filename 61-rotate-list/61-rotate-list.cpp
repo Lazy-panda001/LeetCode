@@ -12,34 +12,32 @@ class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) 
     {
-        if(head == nullptr or head->next == nullptr or k ==0)
+        if(head == nullptr or head->next == nullptr or k==0)
         {
             return head;
         }
-        ListNode* curr = head;
         
-        int len=1;
+        ListNode* curr = head;
+        int len = 1;
         while(curr->next)
         {
             len++;
             curr = curr->next;
         }
-       // cout<<len<<endl;
+        curr->next = head;
         k = k % len;
         
-        curr->next = head; // make it circular
-        
-        ListNode* head1 = head;
-        
         int val = len - k;
+        ListNode* newHead = head;
         while(--val)
         {
-            head1 = head1->next;
+            newHead = newHead->next;
         }
         
-        head = head1->next;
-        head1->next = nullptr;
+        head = newHead->next;
+        newHead->next = nullptr;
         
         return head;
+        
     }
 };
