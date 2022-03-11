@@ -2,18 +2,27 @@ class Solution {
 public:
     char findTheDifference(string s, string t) 
     {
-        string str = s+t;  // make a single string
+        vector<int> freq(26,0);
         
-        // now in str mostly all character repeat twice except one character and that it the answer
-        cout<<str<<endl;
-        
-        char single = 0;
-        
-       for(auto ch : str)   // now simple traverse and find XOR (for finding single character)
+        for(int i=0; i<s.size(); i++)
         {
-            single = single ^ ch;
+            freq[s[i] - 'a']++;
         }
-        return single;
+        for(int i=0; i<t.size(); i++)
+        {
+            freq[t[i]-'a']--;
+        }
         
+        char ch;
+        
+        for(int i=0; i<26; i++)
+        {
+            if(freq[i] != 0)
+            {
+                ch = i + 'a';
+            }
+        }
+        return ch;
+     
     }
 };
