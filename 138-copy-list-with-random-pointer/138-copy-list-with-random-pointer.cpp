@@ -18,16 +18,19 @@ class Solution {
 public:
     Node* copyRandomList(Node* head) 
     {
+        // With space
         unordered_map<Node*,Node*> ump;
-        Node* nhead = new Node(-1);
+        
+        Node* nhead = new Node(-1);  // making dummy node to create copy list again
         Node* prev = nhead;
+        
         Node* curr = head;
         while(curr != nullptr)
         {
             Node* temp = new Node(curr->val);
             prev->next = temp;
             
-            ump.insert({curr , temp});
+            ump[curr] = temp;  // at the same time mapping with (old node and new node ==  a --> a')
             
             prev = prev->next;
             curr = curr->next;
@@ -38,9 +41,10 @@ public:
         Node* c1 = head;
         Node* c2 = nhead;
         
-        while(c1 != nullptr)
+        
+        while(c1 != nullptr)  // this part is for random address connection
         {
-            if(c1->random != nullptr)
+            if(c1->random != nullptr) 
             {
                 c2->random = ump[c1->random]; 
             }
