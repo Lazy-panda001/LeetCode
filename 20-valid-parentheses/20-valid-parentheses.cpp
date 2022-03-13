@@ -2,51 +2,60 @@ class Solution {
 public:
     bool isValid(string str) 
     {
-        stack<int> stk;
-        
+        stack<char> stk;
         int n = str.size();
         
         if(n == 1)
         {
             return false;
         }
-        int i=0;
-        for(; i<n; i++)
+        
+        for(int i=0; i<n; i++)
         {
-            char ch = str[i];
-            
-            if(ch == '(' or ch == '{' or ch == '[')
+            if(str[i] == '(' or str[i] == '{' or str[i] == '[')
             {
-                stk.push(ch);
+                stk.push(str[i]);
             }
-            
-            else if(ch == ')')
+            else if(str[i] ==')')
             {
                 if(stk.size() == 0 or stk.top() != '(')
+                {
                     return false;
+                }
                 else
+                {
                     stk.pop();
+                }
             }
-            
-            else if(ch == '}')
+           else if(str[i] =='}')
             {
                 if(stk.size() == 0 or stk.top() != '{')
+                {
                     return false;
+                }
                 else
+                {
                     stk.pop();
+                }
             }
-            
-            else if(ch == ']')
+            else if(str[i] ==']')
             {
                 if(stk.size() == 0 or stk.top() != '[')
+                {
                     return false;
+                }
                 else
+                {
                     stk.pop();
+                }
             }
         }
         
         if(stk.empty() == true)
+        {
             return true;
+        }
         return false;
+        
     }
 };
