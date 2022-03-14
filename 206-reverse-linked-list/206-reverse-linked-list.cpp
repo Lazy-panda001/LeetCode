@@ -16,11 +16,11 @@ public:
         
         while(p != nullptr)
         {
-            r=q;
+            r=q; // all 3 forward shift
             q=p;
             p = p->next;
             
-            q->next = r;
+            q->next = r; // backword linking
         }
         
         return q;
