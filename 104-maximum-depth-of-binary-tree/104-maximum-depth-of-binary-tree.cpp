@@ -26,7 +26,7 @@ public:
         while(!qu.empty())
         {
             int size = qu.size();
-            
+            depth++;
             for(int i=0; i<size; i++)
             {
                 TreeNode* curr = qu.front(); qu.pop();
@@ -42,7 +42,7 @@ public:
                 }
             }
             
-            depth++;
+            
         }
         
         return depth;
