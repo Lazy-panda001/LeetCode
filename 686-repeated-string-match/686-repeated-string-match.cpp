@@ -18,7 +18,7 @@ public:
         str +=a;
         count++;
         
-        if(str.find(b) != string :: npos)
+        if(str.find(b) != string::npos)
         {
             return count;
         }
