@@ -9,7 +9,8 @@ public:
             return startValue - target;
         }
         
-        int count = 0;
+       /* Iterative code
+       int count = 0;
         while(target > startValue)
         {
             if(target % 2 == 0)
@@ -23,7 +24,14 @@ public:
             count++;
         }
         
-        return count + startValue - target;
+        return count + startValue - target;  */
         
+        // Recursive code
+        if(target % 2 == 0)
+        {
+            return 1 + brokenCalc(startValue,target /2);
+        }
+        else
+            return 1 + brokenCalc(startValue , target+1);
     }
 };
