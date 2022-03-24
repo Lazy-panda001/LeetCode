@@ -25,24 +25,20 @@ public:
     {
         
         ListNode* temp = head;
-        int n = find_length(head);
         
-        vector<int> nums(n);
+        
+        vector<int> nums;
         
         int k=0;
         
         while(temp)
         {
-            nums[k] = temp->val;
+            nums.push_back(temp->val);
             k++;
             temp = temp->next;
         }
         
-        /*for(auto it:nums)
-        {
-            cout<<it<<" ";
-        }*/
-            
+        int n = nums.size();
         stack<int> stk;
         vector<int>res;
         
