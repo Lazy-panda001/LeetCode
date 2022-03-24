@@ -31,7 +31,7 @@ public:
                     
                     if(st.find(row_cel) != st.end() || st.find(col_cel) != st.end() || st.find(box_cel) != st.end())
                     {
-                        return false;
+                        return 0;
                     }
                     st.insert(row_cel);
                     st.insert(col_cel);
@@ -41,7 +41,7 @@ public:
             }
         }
         
-        return true;   
+        return 1;   
     }
 };
 
