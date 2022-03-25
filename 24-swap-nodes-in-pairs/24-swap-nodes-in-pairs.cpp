@@ -13,28 +13,32 @@ public:
     ListNode* swapPairs(ListNode* head) 
     {
         if(head == nullptr or head->next == nullptr)
-        {
-            return head;
-        }
-        
-        ListNode* curr = head->next , *prev = head;
-        head = curr;
-        
-        while(true)
-        {
-            ListNode* temp = curr->next;
-            curr->next = prev;
-            
-            if(temp == nullptr or temp->next == nullptr)
-            {
-                prev->next = temp;
-                break; 
-            }
-            
-            prev->next = temp->next;
-            prev = temp;
-            curr = temp->next;
-        }
+    {
         return head;
+    }
+    
+    ListNode* curr = head->next, *prev = head;
+
+    head = curr;
+
+    while(true)
+    {
+        ListNode* temp = curr->next;
+        curr->next = prev; // loop create hua between 2nd to 1st node for the first time
+
+        if(temp == nullptr or temp->next == nullptr) // if only 2 or 3 nodes presend in LL (IMP TC)
+        {
+            prev->next = temp;
+            break;
+        }
+
+        // important lines
+        prev->next = temp->next; 
+        prev= temp;
+        curr = temp->next;
+
+    }
+
+    return head;
     }
 };
