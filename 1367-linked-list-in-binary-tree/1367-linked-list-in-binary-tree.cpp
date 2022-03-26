@@ -35,6 +35,8 @@ public:
     
     bool isSubPath(ListNode* head, TreeNode* root) 
     {
+        /*
+        Recursion code
         if(head == nullptr)
         {
             return false;
@@ -52,5 +54,29 @@ public:
         bool cal1 = isSubPath(head , root->left);
         bool cal2 = isSubPath(head , root->right);
         return cal1 or cal2;
+        */
+        
+        queue<TreeNode*> qu;
+        qu.push(root);
+        
+        while(!qu.empty())
+        {
+            auto curr = qu.front();
+            qu.pop();
+            
+            if(curr->val == head->val and dfs(curr , head))
+                return true;
+            if(curr->left)
+            {
+                qu.push(curr->left);
+            }
+            
+            if(curr->right)
+            {
+                qu.push(curr->right);
+            }
+        }
+        
+        return false;
     }
 };
