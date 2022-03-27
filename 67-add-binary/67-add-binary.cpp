@@ -15,6 +15,7 @@ public:
         sum = carry;
         if (i >= 0) 
             sum += (a[i] - '0');
+         i--; 
         
         if (j >= 0) 
             sum += (b[j] - '0');
@@ -23,7 +24,7 @@ public:
         
         carry = sum / 2;
         
-        i--; 
+       
         
         j--;
     }
