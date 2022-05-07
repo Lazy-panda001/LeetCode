@@ -1,6 +1,6 @@
 class MyStack {
 public:
-    queue<int> qu;
+    queue<int> qu; // only one queue is enough
     MyStack() 
     {
         
@@ -8,14 +8,14 @@ public:
     
     void push(int x) 
     {
-        qu.push(x);
+        qu.push(x);  // 1. push x value
         
-        int size = qu.size();
-        int run = size-1;
+        int size = qu.size();  // 2. find size of queue
+        int run = size-1;      // 3. run loop for size - 1;
         
-        while(run--)
+        while(run--) 
         {
-            qu.push(qu.front());
+            qu.push(qu.front());   // 4. pop from queue and agian push into queue
             qu.pop();
         }
         return;
@@ -24,7 +24,7 @@ public:
     
     int pop() 
     {
-        int val = qu.front(); qu.pop();
+        int val = qu.front(); qu.pop(); 
         return val;
         
     }
