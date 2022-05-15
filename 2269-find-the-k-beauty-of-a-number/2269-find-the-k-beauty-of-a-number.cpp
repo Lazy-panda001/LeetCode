@@ -11,7 +11,7 @@ public:
             
             int divisor = stoi(str2);
             
-            if(divisor == 00 )
+            if(divisor == 0 )
                 continue;
             
             if(num % divisor == 0)
