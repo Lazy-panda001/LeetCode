@@ -8,6 +8,7 @@ public:
         int row = matrix.size();
         int col = matrix[0].size();
         
+        // presum of each row
         for(int i=0; i<row; i++)
         {
             for(int j=1; j<col; j++)
@@ -16,6 +17,7 @@ public:
             }
         }
         
+        // prefix sum of each column
         for(int i=1; i<row; i++)
         {
             for(int j=0; j<col; j++)
@@ -24,6 +26,7 @@ public:
             }
         }
         
+        // copied into new matrix
         prefix_sum_matrix = matrix;
     }
     
@@ -31,8 +34,10 @@ public:
     {
         int total_sum = prefix_sum_matrix[row2][col2];
         
+        
         int extra_sum =
             
+        // check condition for negative cell
         ((col1==0) ? 0 : prefix_sum_matrix[row2][col1-1]) + 
         ((row1==0)? 0 :  prefix_sum_matrix[row1-1][col2]) -                                         ((row1!=0 and col1 !=0) ? prefix_sum_matrix[row1-1][col1-1] : 0 );
        
