@@ -13,8 +13,7 @@ public:
         
         int start_idx = 0;
         
-        int min_opr = 0;
-        bool flag = false;
+        int min_opr = INT_MIN;
         
         // Sliding Window Technique
         for(int end_idx = 0; end_idx < nums.size(); end_idx++)
@@ -29,12 +28,11 @@ public:
             
             if(curr_sum == target_sum)
             {
-                flag = true;
                 min_opr = max(min_opr , end_idx - start_idx + 1);
             }
         }
         
-        if(flag == false)
+        if(min_opr == INT_MIN)
             return -1;
         return nums.size() - min_opr;
         
