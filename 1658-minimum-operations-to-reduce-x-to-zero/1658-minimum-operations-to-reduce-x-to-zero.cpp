@@ -26,7 +26,7 @@ public:
                 start_idx++;
             }
             
-            if(curr_sum == target_sum)
+            if(curr_sum == target_sum)  // step 3 --> solution point
             {
                 min_opr = max(min_opr , end_idx - start_idx + 1);
             }
