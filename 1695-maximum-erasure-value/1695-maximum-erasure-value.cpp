@@ -20,8 +20,7 @@ public:
             curr_sum = curr_sum + nums[end];
             st.insert(nums[end]);
             end++;
-            max_sum = max(max_sum , curr_sum);
-            
+            max_sum = max(max_sum , curr_sum);    
         }
         
         return max_sum;
