@@ -1,65 +1,43 @@
-class Solution {
+class Solution 
+{
 public:
     int minDeletions(string s) 
     {
-        /*
-        unordered_map<char,int> char_counts;
+        unordered_map<char,int> mpp;
         
-        for(auto ch : s)
+    for(int i=0; i<s.size(); i++)
+    {
+        mpp[s[i]]++;
+    }
+        
+    int cnt = 0; 
+        
+    unordered_map<int,char> mpp2;
+        
+    for(auto i : mpp)
+    {
+        if(mpp2.find(i.second) == mpp2.end())
         {
-            char_counts[ch]++;
+            mpp2[i.second] = i.first;
+           // cout<<i.second<<" "<<it.first<<endl;
         }
-        
-        unordered_set<int> seen;
-        
-        int ans=0;
-        
-        for(auto [k,v] : char_counts)
+        else if(mpp2.find(i.second) != mpp2.end())
         {
-            if(seen.find(v) != seen.end())
+           while(mpp2.find(i.second) != mpp2.end())
+           {
+                cnt++;
+            
+                i.second--;
+           }
+            
+           if(i.second > 0)
             {
-                while(seen.find(v) != seen.end())
-                {
-                    v--;
-                    ans++;
-                }
+                mpp2[i.second] = i.first;
             }
-            
-            if(v>0)
-            {
-                seen.insert(v);
-            }
+          }
+        
         }
-        
-        return ans;
-        */
-        
-        // total - keep = not keep
-        
-        vector<int>freq(26,0);
-        for(int i=0; i<s.size(); i++)
-        {
-            freq[s[i] - 'a']++;
-        }
-        
-        sort(freq.begin(), freq.end(), greater<int>());
-        
-        int prev = INT_MAX;
-        int keep=0;
-        
-        for(int i=0; i<26; i++)
-        {
-            int f = freq[i];
-            
-            if(f == 0 or prev == 0)
-            {
-                break;
-            }
-            
-            prev = min(f, prev-1);
-            
-            keep +=prev;
-        }
-        return s.size() - keep;
+    
+        return cnt ;
     }
 };
