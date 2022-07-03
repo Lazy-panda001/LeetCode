@@ -2,27 +2,24 @@ class Solution {
 public:
     string decodeMessage(string key, string m) 
     {
-
-        vector<char>map(26);
+        unordered_map<char,char> ump;
         
-        int ascii = 0;
-        for(auto i : key)
+        char ch = 'a';
+        for(int i=0; i<key.size(); i++)
         {
-            if(i != 32 and !map[i- 'a'])
+            if(key[i] != ' ' and ump[key[i]] == 0)
             {
-                map[i- 'a'] = (ascii + 'a');
-                ascii++;
+                ump[key[i]] = ch;
+                ch++;
             }
         }
         
-        for(int i=0 ;i<m.size(); i++)
+        for(int i=0; i<m.size(); i++)
         {
-            if(m[i] != 32)
-            {
-                 m[i] = map[m[i] - 'a'];
-            }
-           
+            if(m[i] != ' ')
+                m[i] = ump[m[i]];
         }
         return m;
+        
     }
 };
