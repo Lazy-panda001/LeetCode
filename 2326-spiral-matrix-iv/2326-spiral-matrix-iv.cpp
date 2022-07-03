@@ -24,17 +24,16 @@ public:
         int cnt = 0;
         int tot = m*n;
         
-        while(cnt < tot)
+        while(true)
         {
             // top filling
-            for(int j=minc, i=minr; j<=maxc and temp != nullptr and cnt < tot; j++)
+            for(int j=minc, i=minr; j<=maxc and temp != nullptr; j++)
             {
                 mat[i][j] = temp->val;
                 temp = temp->next;
-                cnt++;
             }
             
-             if(temp == nullptr or cnt == tot)
+             if(temp == nullptr)
             {
                 break;
             }
@@ -43,14 +42,14 @@ public:
             
            
             // right filling
-            for(int i= minr, j=maxc; i<=maxr and temp!= nullptr and cnt<tot; i++)
+            for(int i= minr, j=maxc; i<=maxr and temp!= nullptr; i++)
             {
                 mat[i][j] = temp->val;
                 temp = temp->next;
-                cnt++;
+                
             }
             
-            if(temp == nullptr or cnt == tot)
+            if(temp == nullptr)
             {
                 break;
             }
@@ -58,27 +57,30 @@ public:
            
             
             // bottom filling
-            for(int j=maxc, i=maxr; j>=minc and temp != nullptr and cnt < tot ; j--)
+            for(int j=maxc, i=maxr; j>=minc and temp != nullptr; j--)
             {
                 mat[i][j] = temp->val;
                 temp = temp->next;
-                cnt++;
+               
             }
            
-             if(temp == nullptr or cnt == tot)
+             if(temp == nullptr)
             {
                 break;
             }
             maxr--;
             
             // left filling
-            for(int i=maxr, j = minc; i>=minr and temp != nullptr and cnt < tot ; i--)  
+            for(int i=maxr, j = minc; i>=minr and temp != nullptr; i--)  
             {
                  mat[i][j] = temp->val;
                 temp = temp->next;
-                cnt++;
             }
             
+            if(temp == nullptr)
+            {
+                break;
+            }
             minc++;
         }
         
