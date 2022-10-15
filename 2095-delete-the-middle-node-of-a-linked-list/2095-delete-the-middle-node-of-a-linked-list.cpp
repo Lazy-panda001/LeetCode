@@ -19,7 +19,7 @@ public:
         
         ListNode* slow = head;
         ListNode* fast = head;
-        ListNode* prev = head;
+        ListNode* prev = nullptr;
         
         if(head == nullptr)
         {
@@ -36,13 +36,11 @@ public:
         if(slow->next != nullptr)
         {
             prev->next = slow->next;
-            return head;
         }
         
         else if(slow->next == nullptr)
         {
             prev->next = nullptr;
-            return head;
         }
         return head;
     }
