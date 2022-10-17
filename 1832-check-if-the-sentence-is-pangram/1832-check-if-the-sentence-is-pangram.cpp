@@ -3,19 +3,22 @@ public:
     bool checkIfPangram(string sentence) 
     {
         vector<int> freq(26,0);
+        int total=0;
         for(int i=0; i<sentence.size(); i++)
         {
-            freq[sentence[i]-'a']++;
-        }
-        
-        for(int i=0; i<26; i++)
-        {
-            if(freq[i] ==0)
+            if(++freq[sentence[i]-'a'] ==1)
             {
-                return false;
+                total++;
             }
         }
-        return true;
+        
+        cout<<total<<endl;
+        if(total== 26)
+        {
+            return true;
+        }
+        return false;
+      
         
     }
 };
