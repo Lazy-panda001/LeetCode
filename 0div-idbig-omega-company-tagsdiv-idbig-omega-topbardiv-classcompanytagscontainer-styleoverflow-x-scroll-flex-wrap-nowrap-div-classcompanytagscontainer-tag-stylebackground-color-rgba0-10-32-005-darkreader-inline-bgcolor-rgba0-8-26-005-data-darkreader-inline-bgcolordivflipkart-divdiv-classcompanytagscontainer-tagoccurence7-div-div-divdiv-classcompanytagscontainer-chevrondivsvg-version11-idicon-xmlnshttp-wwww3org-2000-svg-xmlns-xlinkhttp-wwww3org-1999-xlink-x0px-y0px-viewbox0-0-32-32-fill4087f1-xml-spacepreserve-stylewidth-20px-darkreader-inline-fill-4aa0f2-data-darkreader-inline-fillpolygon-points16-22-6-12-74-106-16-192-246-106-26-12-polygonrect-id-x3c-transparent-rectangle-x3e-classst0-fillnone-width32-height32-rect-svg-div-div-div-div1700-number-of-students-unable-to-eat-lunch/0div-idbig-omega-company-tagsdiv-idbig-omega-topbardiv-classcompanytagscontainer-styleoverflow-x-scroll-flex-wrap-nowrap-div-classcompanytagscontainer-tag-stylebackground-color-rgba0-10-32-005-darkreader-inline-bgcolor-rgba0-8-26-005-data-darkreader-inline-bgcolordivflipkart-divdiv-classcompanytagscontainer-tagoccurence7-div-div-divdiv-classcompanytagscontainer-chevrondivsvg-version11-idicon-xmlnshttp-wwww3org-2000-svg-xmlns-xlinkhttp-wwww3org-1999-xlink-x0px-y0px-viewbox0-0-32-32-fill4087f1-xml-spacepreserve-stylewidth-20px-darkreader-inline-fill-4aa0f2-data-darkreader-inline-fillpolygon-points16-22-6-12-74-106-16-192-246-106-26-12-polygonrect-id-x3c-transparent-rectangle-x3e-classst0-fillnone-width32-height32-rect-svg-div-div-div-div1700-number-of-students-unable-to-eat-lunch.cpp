@@ -16,8 +16,8 @@ public:
             }
         }
         
-        
-        for(int i=0; i<n; i++) {
+        int i=0;
+        for(;i<n; i++) {
            if(sandwiches[i] == 0) {
                if(s_0 > 0) {
                    s_0--;
@@ -36,6 +36,6 @@ public:
            }
         }
         
-        return s_0+s_1;
+        return n-i;
     }
 };
