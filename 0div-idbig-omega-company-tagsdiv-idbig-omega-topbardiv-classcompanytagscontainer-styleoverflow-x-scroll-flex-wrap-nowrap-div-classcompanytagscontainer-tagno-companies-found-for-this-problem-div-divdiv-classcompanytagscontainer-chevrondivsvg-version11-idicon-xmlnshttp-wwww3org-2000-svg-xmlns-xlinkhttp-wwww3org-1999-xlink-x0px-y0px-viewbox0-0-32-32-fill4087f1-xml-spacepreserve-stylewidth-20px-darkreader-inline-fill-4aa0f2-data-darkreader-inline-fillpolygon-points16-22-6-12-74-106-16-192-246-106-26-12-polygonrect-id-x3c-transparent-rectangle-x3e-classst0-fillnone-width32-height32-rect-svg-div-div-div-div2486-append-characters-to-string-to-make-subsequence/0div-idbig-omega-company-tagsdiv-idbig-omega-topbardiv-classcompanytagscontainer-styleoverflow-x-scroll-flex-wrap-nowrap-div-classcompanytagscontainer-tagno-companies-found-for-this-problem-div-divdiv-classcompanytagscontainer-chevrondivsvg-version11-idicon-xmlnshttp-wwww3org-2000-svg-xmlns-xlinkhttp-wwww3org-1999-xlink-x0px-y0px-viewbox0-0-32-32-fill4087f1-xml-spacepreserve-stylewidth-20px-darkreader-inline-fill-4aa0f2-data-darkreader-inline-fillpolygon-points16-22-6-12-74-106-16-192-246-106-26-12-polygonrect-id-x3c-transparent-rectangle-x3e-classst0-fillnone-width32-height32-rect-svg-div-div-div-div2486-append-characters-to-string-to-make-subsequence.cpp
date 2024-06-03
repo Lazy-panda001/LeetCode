@@ -6,7 +6,7 @@ public:
         int n1 = s.size();
         int n2 = t.size();
         
-        while(i < n1 and j < n2) 
+        while(i < n1 or j < n2) 
         {
             if(s[i] != t[j])
             {
@@ -29,13 +29,10 @@ public:
         {
             return n2 - j;
         }
-        else if(j == n2 and i < n1) 
+        else 
         {
             return 0;
         }
-        else
-            return 0;
-        
         
     }
 };
